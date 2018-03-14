@@ -4,11 +4,19 @@ class Constants {
   public static $passwordsDoNotMatch = "Your passwords don't match.";
   public static $passwordsNotAlphanumeric = "Your password can only contain letters and numbers.";
   public static $passwordsCharacters = "Your password must be between 7 and 25 characters.";
-  public static $emailInvlaid = "Email is invalid.";
+
+  public static $emailInvalid = "Email is invalid.";
   public static $emailsDoNotMatch = "Your emails don't match.";
+  public static $emailTaken = "This email is already in use.";
+
   public static $lastNameCharacters = "Your last name must be between 2 and 25 characters.";
   public static $firstNameCharacters = "Your first name must be between 2 and 25 characters.";
+  
   public static $usernameCharacters = "Your username must be between 5 and 25 characters.";
+  public static $usernameTaken = "Your username must be unique. This username already exists.";
+
+  
+  public static $loginFailed = "Your username or password was incorrect.";
 
 }
 
