@@ -1,16 +1,98 @@
+<?php 
+  $songQuery = mysqli_query($con, "SELECT id FROM songs ORDER BY RAND() LIMIT 5");
+  
+  $resultArray = array();
+
+  while($row = mysqli_fetch_array($songQuery)) {
+
+    array_push($resultArray, $row['id']);
+
+  }
+
+  $jsonArray = json_encode($resultArray);
+
+
+?>
+<script>
+
+  
+
+$(document).ready(function(){
+
+  currentPlaylist = <?php echo $jsonArray; ?>;
+  audioElement = new Audio();
+  setTrack(currentPlaylist[0], currentPlaylist, false);
+
+});
+
+
+function setTrack(trackId, newPlaylist, play) {
+
+  $.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data){
+
+
+        var track = JSON.parse(data);
+
+        $(".trackName span").text(track.title);
+
+        $.post("includes/handlers/ajax/getArtistJson.php", { artistId: track.artist }, function(data) {
+            
+            var artist = JSON.parse(data);
+
+            $(".artistName span").text(artist.name);
+        });
+
+
+        $.post("includes/handlers/ajax/getAlbumJson.php", { albumId: track.album }, function(data) {
+            
+            var album = JSON.parse(data);
+
+            $(".albumLink img").attr("src", album.artworkPath);
+        });
+
+
+        audioElement.setTrack(track.path);
+        audioElement.play();
+  });
+
+  if(play == true) {
+
+      audioElement.play();
+
+  }
+
+}
+
+
+function playSong() {
+  $(".controlButton.play").hide();
+  $(".controlButton.pause").show();
+  audioElement.play();
+}
+
+function pauseSong() {
+  $(".controlButton.play").show();
+  $(".controlButton.pause").hide();
+  audioElement.pause();
+}
+
+
+
+</script>
+
     <div id="nowPlayingBarContainer">
     <div id="nowPlayingBar">
       <div id="nowPlayingLeft">
         <div class="content">
           <span class="albumLink">
-            <img src="https://i.ytimg.com/vi/rb8Y38eilRM/maxresdefault.jpg" class="albumArtwork"></img>
+            <img src="" class="albumArtwork"></img>
           </span>
           <div class="trackInfo">
             <span class="trackName">
-              <span>When the Saints</span>
+              <span></span>
             </span>
             <span class="artistName">
-              <span>Louie Armstrong</span>
+              <span></span>
             </span>
 
           </div>
@@ -27,10 +109,10 @@
             <button class="controlButton rewind" title="Rewind Button">
               <img src="assets/images/icons/icons8-rewind_filled.png" alt="Rewind">
             </button>
-            <button class="controlButton play" title="Play Button">
+            <button class="controlButton play" title="Play Button" onclick="playSong()">
               <img src="assets/images/icons/icons8-play_button_circled.png" alt="Play">
             </button>
-            <button class="controlButton pause" title="Pause Button" style="display: none;">
+            <button class="controlButton pause" title="Pause Button" style="display: none;" onclick="pauseSong()"> 
               <img src="assets/images/icons/icons8-circled_pause.png" alt="Pause">
             </button>
             <button class="controlButton next" title="FastForward Button">
