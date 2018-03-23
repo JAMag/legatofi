@@ -267,7 +267,7 @@ background-size: cover;
 .entityInfo .leftSection {
     width: 30%;
     float: left;
-    max-width: 250px;
+    max-width: 750px;
 }
 
 .entityInfo .leftSection img {
@@ -370,4 +370,56 @@ background-size: cover;
   margin-bottom: 5px;
 
 }
+
+.artistInfo {
+  text-align: center;
+}
+
+
+.button {
+
+  color: #fff;
+  background-color: transparent;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border: 2px solid #fff;
+  font-weight: 500;
+  letter-spacing: 2px;
+  border-radius: 25px;
+  padding: 15px;
+  min-width: 122px;
+
+}
+
+
+.button.green {
+  background-color: #2ebd59;
+}
+
+
+.borderBottom {
+  border-bottom: 1px solid #939393;
+  margin-bottom: 20px;
+}
+
+
+.tracklistContainer h2,
+.gridViewContainer h2 {
+  text-align: center;
+}
+
+
+
+[role="link"] {
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
 
