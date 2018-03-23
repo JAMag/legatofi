@@ -404,7 +404,8 @@ background-size: cover;
 
 
 .tracklistContainer h2,
-.gridViewContainer h2 {
+.gridViewContainer h2,
+.artistsContainer h2 {
   text-align: center;
 }
 
@@ -415,11 +416,51 @@ background-size: cover;
 }
 
 
+.searchContainer {
+
+  background-color: #282828;
+  padding: 20px;
+
+}
+
+.searchContainer h4 {
+  color: #1dcc46;
+  margin: 5px;
+  font-weight: 300;
+
+}
+
+.searchContainer .searchInput {
+  width: 100%;
+  background-color: black;
+  height: 30px;
+  border: none;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding-left: 16px;
+}
 
 
+input:focus {
+    outline: none;
+}
 
 
+.searchResultRow {
+  padding: 15px 10px;
+}
 
+.searchResultRow:hover {
+  background-color: #282828;
+}
 
+.searchResultRow .artistName span {
+  color: #fff;
+}
 
-
+.noResults {
+  margin: 15px;
+  display: block;
+}
