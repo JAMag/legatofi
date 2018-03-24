@@ -11,7 +11,7 @@ else {
 
 $album = new Album($con, $albumId);
 $artist = $album->getArtist();
-
+$artistId = $artist->getId();
 
 ?>
 
